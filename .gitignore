@@ -1,0 +1,37 @@
+[Lien]  
+[Lien]  
+[Lien]  
+[Lien]  
+[Lien]  
+
+# Thư mục  
+Library/  
+Temp/  
+Obj/  
+Build/  
+Builds/  
+Logs/  
+UserSettings/  
+
+# Các file  
+*.csproj  
+*.sln  
+*.suo  
+*.user  
+*.userprefs  
+*.pidb  
+*.pidb.meta  
+*.pdb  
+*.mdb  
+*.opendb  
+*.opendb.meta  
+*.dll  
+*.dll.meta  
+*.exe  
+*.exe.meta  
+*.apk  
+*.apk.meta  
+*.unitypackage  
+
+# Thư viên  
+Assets/AssetStoreTools*  
