@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerControll : MonoBehaviour
 {
+    protected static PlayerControll instance;
+    public static PlayerControll Instance => instance;
     [SerializeField] protected float _speed;
     [SerializeField] protected float _jumpForce;
     [SerializeField] protected float _rotateSpeed;
@@ -17,7 +19,17 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] protected float _accelaction;
     [SerializeField] protected float _decelaction;
 
-
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
         _rb = GetComponent<Rigidbody>();

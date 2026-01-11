@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - PlayerCheck
+  - Coin
+  - Obs
+  - Map
   layers:
   - Default
   - TransparentFX
