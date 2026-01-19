@@ -9,6 +9,7 @@ TagManager:
   - Coin
   - Obs
   - Map
+  - Obstacle
   layers:
   - Default
   - TransparentFX

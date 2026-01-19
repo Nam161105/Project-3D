@@ -47,15 +47,21 @@ public class PlayerControll : MonoBehaviour
         float horiInput = Input.GetAxis("Horizontal");
         float vertInput = Input.GetAxis("Vertical");
 
-        Vector3 inputVector = new Vector3(horiInput, 0f, vertInput);
-        inputVector.Normalize();
+        float maxInput = Mathf.Max(0f, vertInput);
+
+        Vector3 inputVector = new Vector3(horiInput, 0f, maxInput);
+
+        if (inputVector.magnitude > 0.1f)
+        {
+            inputVector.Normalize();
+        }
         Vector3 moveSpeed = inputVector * _speed;
 
         _rb.velocity = new Vector3(moveSpeed.x, _rb.velocity.y, moveSpeed.z);
     }
     protected void Move()
     {
-        bool getKey = Input.GetKey("a") || Input.GetKey("d") || Input.GetKey("w") || Input.GetKey("s");
+        bool getKey = Input.GetKey("a") || Input.GetKey("d") || Input.GetKey("w");
         if (getKey && _velocity < 1.0f)
         {
             _velocity += Time.deltaTime * _accelaction;
@@ -78,11 +84,13 @@ public class PlayerControll : MonoBehaviour
         float horiInput = Input.GetAxis("Horizontal");
         float vertInput = Input.GetAxis("Vertical");
 
-        Vector3 movementDir = new Vector3(horiInput, 0f, vertInput).normalized;
+        float maxRotate = Mathf.Max(0f, vertInput);
 
-        if (movementDir.magnitude >= 0.01f)
+        Vector3 movementDir = new Vector3(horiInput, 0f, maxRotate);
+
+        if (movementDir.sqrMagnitude > 0.001f)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(movementDir);
+            Quaternion targetRotation = Quaternion.LookRotation(movementDir.normalized);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotateSpeed * Time.deltaTime);
         }
     }
@@ -95,7 +103,10 @@ public class PlayerControll : MonoBehaviour
             _isOnGround = false;
         }
     }
+    protected void GetInput()
+    {
 
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))

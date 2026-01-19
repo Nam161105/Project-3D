@@ -4,10 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 public class HealthBarPlayer : MonoBehaviour, IDame
 {
-
+    protected static HealthBarPlayer instance;
+    public static HealthBarPlayer Instance => instance;
     [SerializeField] protected Image _healthBar;
     [SerializeField] protected DataPlayer _healthData;
 
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         _healthData._currentHp = _healthData._maxHp;
@@ -30,6 +43,14 @@ public class HealthBarPlayer : MonoBehaviour, IDame
         this.UpdateHealthBar();
     }
 
+    public void AddHealth(float health)
+    {
+        _healthData._currentHp += health;
+        if (_healthData._currentHp >= _healthData._maxHp)
+        {
+            _healthData._currentHp = _healthData._maxHp;
+        }
+    }
     protected void Die()
     {
         Debug.Log("Player da chet");

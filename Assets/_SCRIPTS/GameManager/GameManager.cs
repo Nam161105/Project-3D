@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     protected bool isPosFound = false;
     private int tries = 0;
 
+    [Header("Quiz")]
+    [SerializeField] protected float _timer;
+    [SerializeField] protected float _targetTime;
+
 
     private void Awake()
     {
@@ -28,7 +32,15 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(SpawnCoinAfterTime());
     }
-
+    private void Update()
+    {
+        _timer += Time.deltaTime;
+        if(_timer >= _targetTime)
+        {
+            QuizManager.Instance.ShowNextQuestion();
+            _timer = 0;
+        }
+    }
     protected IEnumerator SpawnCoinAfterTime()
     {
         const float MinDistance = 2.0f; 
