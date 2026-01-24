@@ -12,10 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c210fe49b1a1f474393f7eb095fc2f2a, type: 3}
   m_Name: NewQuestion 2
   m_EditorClassIdentifier: 
-  question: ???
+  question: "\u0110\u1EC3 nh\xE2n v\u1EADt trong game bi\u1EBFt \"nghe l\u1EDDi\"
+    b\u1EA1n (v\xED d\u1EE5: b\u1EA5m n\xFAt l\xE0 nh\u1EA3y), b\u1EA1n c\u1EA7n
+    l\xE0m g\xEC?"
   answers:
-  - 1
-  - 2
-  - 3
-  - 4
-  trueAnswer: 1
+  - "Vi\u1EBFt c\xE1c d\xF2ng l\u1EC7nh (L\u1EADp tr\xECnh) \u0111\u1EC3 ch\u1EC9
+    d\u1EABn cho nh\xE2n v\u1EADt bi\u1EBFt ph\u1EA3i l\xE0m g\xEC khi c\xF3 t\xE1c
+    \u0111\u1ED9ng."
+  - "N\xF3i chuy\u1EC7n tr\u1EF1c ti\u1EBFp v\xE0o mic c\u1EE7a m\xE1y t\xEDnh."
+  - "V\u1EBD nh\xE2n v\u1EADt \u0111\xF3 th\u1EADt \u0111\u1EB9p."
+  - "Ch\u1EE5p \u1EA3nh nh\xE2n v\u1EADt r\u1ED3i d\xE1n v\xE0o m\xE0n h\xECnh."
+  trueAnswer: "Vi\u1EBFt c\xE1c d\xF2ng l\u1EC7nh (L\u1EADp tr\xECnh) \u0111\u1EC3
+    ch\u1EC9 d\u1EABn cho nh\xE2n v\u1EADt bi\u1EBFt ph\u1EA3i l\xE0m g\xEC khi c\xF3
+    t\xE1c \u0111\u1ED9ng."

@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c210fe49b1a1f474393f7eb095fc2f2a, type: 3}
   m_Name: NewQuestion 1
   m_EditorClassIdentifier: 
-  question: 1 + 0 = ?
+  question: "L\xE0m game c\u0169ng gi\u1ED1ng nh\u01B0 x\xE2y m\u1ED9t ng\xF4i nh\xE0,
+    \"Game Engine\" (nh\u01B0 Unity) \u0111\xF3ng vai tr\xF2 l\xE0 g\xEC?"
   answers:
-  - 1
-  - 2
-  - 3
-  - 4
-  trueAnswer: 1
+  - "L\xE0 m\u1ED9t b\u1ED9 d\u1EE5ng c\u1EE5 \u0111\u1EA7y \u0111\u1EE7 (g\u1EA1ch,
+    b\xFAa, xi m\u0103ng) gi\xFAp b\u1EA1n x\xE2y nh\xE0 nhanh h\u01A1n thay v\xEC
+    t\u1EF1 ch\u1EBF ra t\u1EEBng vi\xEAn g\u1EA1ch."
+  - "L\xE0 b\u1EA3n v\u1EBD ng\xF4i nh\xE0 tr\xEAn gi\u1EA5y."
+  - "L\xE0 ng\u01B0\u1EDDi ch\u1EE7 \u0111\u1EBFn mua ng\xF4i nh\xE0 \u0111\xF3."
+  - "L\xE0 khu v\u01B0\u1EDDn xung quanh ng\xF4i nh\xE0."
+  trueAnswer: "L\xE0 m\u1ED9t b\u1ED9 d\u1EE5ng c\u1EE5 \u0111\u1EA7y \u0111\u1EE7
+    (g\u1EA1ch, b\xFAa, xi m\u0103ng) gi\xFAp b\u1EA1n x\xE2y nh\xE0 nhanh h\u01A1n
+    thay v\xEC t\u1EF1 ch\u1EBF ra t\u1EEBng vi\xEAn g\u1EA1ch."

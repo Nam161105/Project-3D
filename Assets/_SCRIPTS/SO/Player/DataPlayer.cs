@@ -7,4 +7,9 @@ public class DataPlayer : ScriptableObject
 {
     public float _currentHp;
     public float _maxHp;
+
+    private void OnEnable()
+    {
+        _currentHp = _maxHp;
+    }
 }

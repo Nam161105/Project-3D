@@ -8,6 +8,7 @@ public class CoinCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.pickUp);
             GameManager.Instance.AddScore();
             this.gameObject.SetActive(false);
         }

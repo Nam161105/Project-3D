@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,9 @@ public class QuizManager : MonoBehaviour
 
     protected DataQuestion _currentQuestion;
     protected int index = 0;
+
+    [Header("CountDownQuestion")]
+    [SerializeField] protected Text countdownText;
     private void Awake()
     {
         if(instance == null)
@@ -61,22 +65,58 @@ public class QuizManager : MonoBehaviour
 
     void OnClickAnswer(string selectedAnswer)
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.buttonClick);
         if (selectedAnswer == _currentQuestion.trueAnswer)
         {
-            Debug.Log("chuc mung");
+            StartCoroutine(TrueQuesAfterTime());
         }
         else
         {
-            Debug.Log("sai roi");
+            StartCoroutine(FalseQuesAfterTime());
         }
 
+        StartCoroutine(CountdownRoutine());
         index++; 
         CloseQuiz();
     }
 
+    IEnumerator TrueQuesAfterTime()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.trueQuestion);
+        HealthBarPlayer.Instance.AddHealth(50);
+    }
+
+    IEnumerator FalseQuesAfterTime()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.falseQuestion);
+        IDame dame = HealthBarPlayer.Instance.gameObject.GetComponent<IDame>();
+        if (dame != null)
+        {
+            dame.TakeDame(100);
+        }
+    }
+
+    IEnumerator CountdownRoutine()
+    {
+        countdownText.gameObject.SetActive(true);
+
+        int count = 3;
+        while (count > 0)
+        {
+            countdownText.text = count.ToString();
+            yield return new WaitForSecondsRealtime(1f);
+            count--;
+        }
+
+        countdownText.text = "GO!";
+        yield return new WaitForSecondsRealtime(0.5f);
+        countdownText.gameObject.SetActive(false);
+        Time.timeScale = 1;
+    }
     protected void CloseQuiz()
     {
         _panelQuiz.SetActive(false);
-        Time.timeScale = 1;
     }
 }

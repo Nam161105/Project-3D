@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c210fe49b1a1f474393f7eb095fc2f2a, type: 3}
+  m_Name: NewQuestion 5
+  m_EditorClassIdentifier: 
+  question: "M\u1ED9t ng\u01B0\u1EDDi l\xE0m l\u1EADp tr\xECnh game c\u1EA7n k\u1EF9
+    n\u0103ng n\xE0o quan tr\u1ECDng nh\u1EA5t?"
+  answers:
+  - "T\u01B0 duy logic (Bi\u1EBFt s\u1EAFp x\u1EBFp c\xE1c b\u01B0\u1EDBc \u0111\u1EC3
+    gi\u1EA3i quy\u1EBFt v\u1EA5n \u0111\u1EC1)."
+  - "Ch\u01A1i game gi\u1ECFi nh\u1EA5t th\u1EBF gi\u1EDBi."
+  - "Bi\u1EBFt v\u1EBD tranh b\u1EB1ng tay c\u1EF1c \u0111\u1EB9p."
+  - "Thu\u1ED9c l\xF2ng t\u1EA5t c\u1EA3 c\xE1c ph\xEDm b\u1EA5m tr\xEAn b\xE0n ph\xEDm."
+  trueAnswer: "T\u01B0 duy logic (Bi\u1EBFt s\u1EAFp x\u1EBFp c\xE1c b\u01B0\u1EDBc
+    \u0111\u1EC3 gi\u1EA3i quy\u1EBFt v\u1EA5n \u0111\u1EC1)."

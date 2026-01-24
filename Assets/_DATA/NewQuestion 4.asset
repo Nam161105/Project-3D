@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c210fe49b1a1f474393f7eb095fc2f2a, type: 3}
+  m_Name: NewQuestion 4
+  m_EditorClassIdentifier: 
+  question: "Khi b\u1EA1n vi\u1EBFt l\u1EC7nh cho game nh\u01B0ng m\xE1y t\xEDnh
+    kh\xF4ng hi\u1EC3u ho\u1EB7c l\xE0m sai, ng\u01B0\u1EDDi ta g\u1ECDi l\u1ED7i
+    \u0111\xF3 l\xE0 g\xEC?"
+  answers:
+  - "Bug (Con b\u1ECD/L\u1ED7i ph\u1EA7n m\u1EC1m)."
+  - "Virus (Vi-r\xFAt)."
+  - "Lag (Gi\u1EADt lag)."
+  - "Spam (R\xE1c)."
+  trueAnswer: "Bug (Con b\u1ECD/L\u1ED7i ph\u1EA7n m\u1EC1m)."

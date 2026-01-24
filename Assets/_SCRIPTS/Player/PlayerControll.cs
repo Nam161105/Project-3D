@@ -99,6 +99,7 @@ public class PlayerControll : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space) && _isOnGround)
         {
             _animator.SetBool("Jump", true);
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.jumpClip);
             _rb.AddForce(new Vector3(_rb.velocity.x, _jumpForce, _rb.velocity.z));
             _isOnGround = false;
         }
