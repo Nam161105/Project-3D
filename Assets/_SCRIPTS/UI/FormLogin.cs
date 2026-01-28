@@ -11,11 +11,12 @@ public class FormLogin : MonoBehaviour
     [SerializeField] protected GameObject _nameNull;
     [SerializeField] protected GameObject _maxName;
 
+    [SerializeField] protected Animator _aniNullName;
+    [SerializeField] protected Animator _aniMaxName;
     //[SerializeField] protected GameObject _sceneLoading;
     //[SerializeField] protected Slider _slider;
     //[SerializeField] protected int _id;
     //[SerializeField] protected Text _textLoading;
-
 
 
     public void SaveName()
@@ -32,10 +33,7 @@ public class FormLogin : MonoBehaviour
             return;
         }
 
-        _nameNull.gameObject.SetActive(false);
-        _maxName.gameObject.SetActive(false);
         PlayerPrefs.SetString("PlayerName", playerName);
-        Debug.Log("ten hop le");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         //_sceneLoading.SetActive(true);
         //_slider.value = 0;
@@ -46,17 +44,17 @@ public class FormLogin : MonoBehaviour
     protected IEnumerator NameNullBoardAfterTime()
     {
         AudioManager.Instance.PlaySFX(AudioManager.Instance.falseQuestion);
-        _nameNull.gameObject.SetActive(true);
+        _aniNullName.SetTrigger("Start");
         yield return new WaitForSeconds(2);
-        _nameNull.gameObject.SetActive(false);
+        _aniNullName.SetTrigger("End");
     }
 
     protected IEnumerator MaxNameBoardAfterTime()
     {
         AudioManager.Instance.PlaySFX(AudioManager.Instance.falseQuestion);
-        _maxName.gameObject.SetActive(true);
+        _aniMaxName.SetTrigger("start");
         yield return new WaitForSeconds(2);
-        _maxName.gameObject.SetActive(false);
+        _aniMaxName.SetTrigger("end");
     }
     //protected IEnumerator LoadScenAfterTime(int id)
     //{

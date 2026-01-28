@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        musicSource.volume = PlayerPrefs.GetFloat("MusicVolume");
         this.PlayMusic(backgroundMusic);
     }
 

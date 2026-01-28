@@ -18,6 +18,9 @@ public class QuizManager : MonoBehaviour
 
     [Header("CountDownQuestion")]
     [SerializeField] protected Text countdownText;
+
+    [Header("AnimationQuiz")]
+    [SerializeField] protected Animator _ani;
     private void Awake()
     {
         if(instance == null)
@@ -36,8 +39,7 @@ public class QuizManager : MonoBehaviour
             Debug.Log("day du cau hoi");
             return;
         }
-        Time.timeScale = 0f;
-        _panelQuiz.SetActive(true);
+        StartCoroutine(QuizStart());
 
         _currentQuestion = _allQuestion[index];
         _textQuestion.text = _currentQuestion.question;
@@ -77,7 +79,6 @@ public class QuizManager : MonoBehaviour
 
         StartCoroutine(CountdownRoutine());
         index++; 
-        CloseQuiz();
     }
 
     IEnumerator TrueQuesAfterTime()
@@ -100,6 +101,7 @@ public class QuizManager : MonoBehaviour
 
     IEnumerator CountdownRoutine()
     {
+        _ani.SetTrigger("End");
         countdownText.gameObject.SetActive(true);
 
         int count = 3;
@@ -115,8 +117,11 @@ public class QuizManager : MonoBehaviour
         countdownText.gameObject.SetActive(false);
         Time.timeScale = 1;
     }
-    protected void CloseQuiz()
+
+    protected IEnumerator QuizStart()
     {
-        _panelQuiz.SetActive(false);
+        _ani.SetTrigger("Start");
+        yield return new WaitForSeconds(0.5f);
+        Time.timeScale = 0;
     }
 }
