@@ -8,6 +8,7 @@ public class HealthBarPlayer : MonoBehaviour, IDame
     public static HealthBarPlayer Instance => instance;
     [SerializeField] protected Image _healthBar;
     [SerializeField] protected DataPlayer _healthData;
+    [SerializeField] protected Animator _ani;
 
 
     private void Awake()
@@ -38,7 +39,8 @@ public class HealthBarPlayer : MonoBehaviour, IDame
         _healthData._currentHp -= dame;
         if(_healthData._currentHp <= 0)
         {
-            this.Die();
+            _ani.SetTrigger("Death");
+            StartCoroutine(DeathAfterTime());
         }
         this.UpdateHealthBar();
     }
@@ -51,9 +53,16 @@ public class HealthBarPlayer : MonoBehaviour, IDame
             _healthData._currentHp = _healthData._maxHp;
         }
     }
+
+    protected IEnumerator DeathAfterTime()
+    {
+        yield return new WaitForSeconds(2);
+        this.Die();
+    }
     protected void Die()
     {
-        Debug.Log("Player da chet");
+        BoardEndGame.Instance.ActiveInfoPlayer();
+        return;
     }
 
 }

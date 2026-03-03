@@ -10,6 +10,7 @@ public class TimeManager : MonoBehaviour
     public static TimeManager Instance => instance;
     [SerializeField] protected Text _timer;
     protected float _time = 0;
+    protected bool _isEnd = false;
 
     private void Awake()
     {
@@ -25,8 +26,16 @@ public class TimeManager : MonoBehaviour
 
     private void Update()
     {
-        _time += Time.deltaTime;
-        _timer.text = FormatTime(_time);
+        this.TimeRun();
+    }
+
+    protected void TimeRun()
+    {
+        if (!_isEnd)
+        {
+            _time += Time.deltaTime;
+            _timer.text = FormatTime(_time);
+        }
     }
 
     private string FormatTime(float timeInSeconds)
@@ -35,5 +44,11 @@ public class TimeManager : MonoBehaviour
         int seconds = Mathf.FloorToInt(timeInSeconds % 60);
 
         return string.Format("{0:D02}:{1:D02}", minutes, seconds);
+    }
+
+    public void ReturnGame()
+    {
+        _isEnd = true;
+        PlayerPrefs.SetFloat("SavedTime", _time);
     }
 }

@@ -18,6 +18,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip jumpClip;
     public AudioClip pickUp;
     public AudioClip buttonClick;
+    public AudioClip bombSound;
+    public AudioClip parallaxSound;
     private void Awake()
     {
         if (instance == null)
@@ -32,7 +34,6 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        musicSource.volume = PlayerPrefs.GetFloat("MusicVolume");
         this.PlayMusic(backgroundMusic);
     }
 

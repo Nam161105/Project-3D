@@ -19,6 +19,10 @@ public class PlayerControll : MonoBehaviour
     [SerializeField] protected float _accelaction;
     [SerializeField] protected float _decelaction;
 
+    [Header("HealthPlayer")]
+    [SerializeField] protected DataPlayer _player;
+
+
     private void Awake()
     {
         if(instance == null)
@@ -38,21 +42,29 @@ public class PlayerControll : MonoBehaviour
 
     void Update()
     {
+        if (_player._currentHp <= 0)
+        {
+            return;
+        }
         this.Move();
         this.Jump();
     }
 
     private void FixedUpdate()
     {
+        if (_player._currentHp <= 0)
+        {
+            _rb.velocity = new Vector3(0, 0, 0);
+            return;
+        }
         float horiInput = Input.GetAxis("Horizontal");
-        float vertInput = Input.GetAxis("Vertical");
+        float vertInput = 1;
 
-        float maxInput = Mathf.Max(0f, vertInput);
-
-        Vector3 inputVector = new Vector3(horiInput, 0f, maxInput);
+        Vector3 inputVector = new Vector3(horiInput, 0f, vertInput);
 
         if (inputVector.magnitude > 0.1f)
         {
+
             inputVector.Normalize();
         }
         Vector3 moveSpeed = inputVector * _speed;
@@ -61,19 +73,15 @@ public class PlayerControll : MonoBehaviour
     }
     protected void Move()
     {
-        bool getKey = Input.GetKey("a") || Input.GetKey("d") || Input.GetKey("w");
-        if (getKey && _velocity < 1.0f)
+        if (_velocity < 1.0f)
         {
             _velocity += Time.deltaTime * _accelaction;
         }
-        if (!getKey && _velocity > 0.0f)
+        else
         {
-            _velocity -= Time.deltaTime * _decelaction;
+            _velocity = 1.0f; 
         }
-        if (!getKey && _velocity < 0.0f)
-        {
-            _velocity = 0.0f;
-        }
+
         _animator.SetFloat("Velocity", _velocity);
 
         this.RotateDir();
@@ -82,11 +90,9 @@ public class PlayerControll : MonoBehaviour
     protected void RotateDir()
     {
         float horiInput = Input.GetAxis("Horizontal");
-        float vertInput = Input.GetAxis("Vertical");
+        float vertInput = 1f;
 
-        float maxRotate = Mathf.Max(0f, vertInput);
-
-        Vector3 movementDir = new Vector3(horiInput, 0f, maxRotate);
+        Vector3 movementDir = new Vector3(horiInput, 0f, vertInput);
 
         if (movementDir.sqrMagnitude > 0.001f)
         {
@@ -112,9 +118,18 @@ public class PlayerControll : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-
             _animator.SetBool("Jump", false);
             _isOnGround = true;
         }
+        if (collision.gameObject.CompareTag("Obs"))
+        {
+            CamerFollowPlayer.Instance.CamParallax();
+            IDame dame = HealthBarPlayer.Instance.GetComponent<IDame>();
+            if (dame != null)
+            {
+                dame.TakeDame(50);
+            }
+        }
     }
+
 }

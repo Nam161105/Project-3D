@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] protected float _timer;
     [SerializeField] protected float _targetTime;
 
+    [Header("HealthPlayer")]
+    [SerializeField] protected DataPlayer _player;
 
     private void Awake()
     {
@@ -34,6 +36,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (_player._currentHp <= 0) return;
         _timer += Time.deltaTime;
         if(_timer >= _targetTime)
         {
@@ -87,9 +90,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddScore()
+    public void AddScore(int coin)
     {
-        _coinCount++;
+        _coinCount += coin;
         _coinText.text = _coinCount.ToString();
+        PlayerPrefs.SetInt("Coin", _coinCount);
     }
+
 }

@@ -26,7 +26,7 @@ public class PauseButton : MonoBehaviour
 
     public void OutButton()
     {
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteKey("PlayerName");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
         Time.timeScale = 1;
     }
@@ -35,5 +35,10 @@ public class PauseButton : MonoBehaviour
     {
         Time.timeScale = 1;
         _panelPause.SetActive(false);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 }

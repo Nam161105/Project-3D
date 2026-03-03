@@ -9,11 +9,13 @@ public class SkullDame : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            CamerFollowPlayer.Instance.CamParallax();
             IDame isCanTakeDmg = other.GetComponent<IDame>();
             if (isCanTakeDmg != null)
             {
                 isCanTakeDmg.TakeDame(_dame);
             }
         }
+
     }
 }

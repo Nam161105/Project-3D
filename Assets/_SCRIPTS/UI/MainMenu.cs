@@ -36,7 +36,7 @@ public class MainMenu : MonoBehaviour
     }
     protected IEnumerator ButtonMainMenu()
     {
-        yield return new WaitForSeconds(1);
-        _aniButton.SetTrigger("Start");
+        yield return new WaitForSeconds(0.5f);
+        _aniTut.SetTrigger("start");
     }
 }

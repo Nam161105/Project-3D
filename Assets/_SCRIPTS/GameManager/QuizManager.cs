@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +22,12 @@ public class QuizManager : MonoBehaviour
 
     [Header("AnimationQuiz")]
     [SerializeField] protected Animator _ani;
+
+    [Header("Deactive Setting")]
+    [SerializeField] protected GameObject _settingPanel;
+
+    [Header("HealthBarPlayer")]
+    [SerializeField] protected DataPlayer _player;
     private void Awake()
     {
         if(instance == null)
@@ -36,7 +43,7 @@ public class QuizManager : MonoBehaviour
     {
         if(index >= _allQuestion.Length)
         {
-            Debug.Log("day du cau hoi");
+            BoardEndGame.Instance.ActiveInfoPlayer();
             return;
         }
         StartCoroutine(QuizStart());
@@ -86,6 +93,7 @@ public class QuizManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(1);
         AudioManager.Instance.PlaySFX(AudioManager.Instance.trueQuestion);
         HealthBarPlayer.Instance.AddHealth(50);
+        GameManager.Instance.AddScore(5);
     }
 
     IEnumerator FalseQuesAfterTime()
@@ -116,10 +124,12 @@ public class QuizManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.5f);
         countdownText.gameObject.SetActive(false);
         Time.timeScale = 1;
+        _settingPanel.SetActive(true);
     }
 
     protected IEnumerator QuizStart()
     {
+        _settingPanel.gameObject.SetActive(false);
         _ani.SetTrigger("Start");
         yield return new WaitForSeconds(0.5f);
         Time.timeScale = 0;
