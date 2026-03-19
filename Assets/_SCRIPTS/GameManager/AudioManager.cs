@@ -20,6 +20,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip buttonClick;
     public AudioClip bombSound;
     public AudioClip parallaxSound;
+    public AudioClip deadSound;
+    public AudioClip winSound;
+    public AudioClip explosion;
+    public AudioClip mouseClick;
     private void Awake()
     {
         if (instance == null)

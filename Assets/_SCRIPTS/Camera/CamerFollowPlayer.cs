@@ -42,55 +42,63 @@ public class CamerFollowPlayer : MonoBehaviour
     public void CamParallax()
     {
         AudioManager.Instance.PlaySFX(AudioManager.Instance.parallaxSound);
-        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position + new Vector3(_offsetX, _offsetY, _offsetZ + 0.5f), _timeParallax * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position + 
+            new Vector3(_offsetX, _offsetY, _offsetZ + 0.6f), _timeParallax * Time.deltaTime);
         StartCoroutine(ParallaxAfterTime());
     }
 
     protected IEnumerator ParallaxAfterTime()
     {
         yield return new WaitForSeconds(0.1f);
-        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position + new Vector3(_offsetX, _offsetY, _offsetZ - 1f), _timeParallax * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position +
+            new Vector3(_offsetX, _offsetY, _offsetZ - 1.2f), _timeParallax * Time.deltaTime);
         StartCoroutine(ParallaxAfterTime2());
     }
 
     protected IEnumerator ParallaxAfterTime2()
     {
         yield return new WaitForSeconds(0.1f);
-        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position + new Vector3(_offsetX, _offsetY, _offsetZ + 1f), _timeParallax * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position + 
+            new Vector3(_offsetX, _offsetY, _offsetZ + 1.2f), _timeParallax * Time.deltaTime);
         StartCoroutine(ParallaxAfterTime3());
     }
 
     protected IEnumerator ParallaxAfterTime3()
     {
         yield return new WaitForSeconds(0.1f);
-        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position + new Vector3(_offsetX, _offsetY, _offsetZ - 0.5f), _timeParallax * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position + 
+            new Vector3(_offsetX, _offsetY, _offsetZ - 0.6f), _timeParallax * Time.deltaTime);
         StartCoroutine(ParallaxAfterTime4());
     }
 
     protected IEnumerator ParallaxAfterTime4()
     {
         yield return new WaitForSeconds(0.1f);
-        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position + new Vector3(_offsetX, _offsetY, _offsetZ + 0.5f), _timeParallax * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position + 
+            new Vector3(_offsetX, _offsetY, _offsetZ + 0.6f), _timeParallax * Time.deltaTime);
         StartCoroutine(ParallaxAfterTime5());
     }
 
     protected IEnumerator ParallaxAfterTime5()
     {
         yield return new WaitForSeconds(0.1f);
-        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position + new Vector3(_offsetX, _offsetY, _offsetZ - 1f), _timeParallax * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position + 
+            new Vector3(_offsetX, _offsetY, _offsetZ - 1.2f), _timeParallax * Time.deltaTime);
         StartCoroutine(ParallaxAfterTime6());
     }
 
     protected IEnumerator ParallaxAfterTime6()
     {
         yield return new WaitForSeconds(0.1f);
-        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position + new Vector3(_offsetX, _offsetY, _offsetZ + 1f), _timeParallax * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position + 
+            new Vector3(_offsetX, _offsetY, _offsetZ + 1.2f), _timeParallax * Time.deltaTime);
         StartCoroutine(ParallaxAfterTime7());
     }
 
     protected IEnumerator ParallaxAfterTime7()
     {
         yield return new WaitForSeconds(0.1f);
-        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position + new Vector3(_offsetX, _offsetY, _offsetZ - 0.5f), _timeParallax * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position + 
+            new Vector3(_offsetX, _offsetY, _offsetZ - 0.6f), _timeParallax * Time.deltaTime);
     }
 }

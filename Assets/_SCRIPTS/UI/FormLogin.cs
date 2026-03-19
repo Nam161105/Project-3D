@@ -13,10 +13,6 @@ public class FormLogin : MonoBehaviour
 
     [SerializeField] protected Animator _aniNullName;
     [SerializeField] protected Animator _aniMaxName;
-    //[SerializeField] protected GameObject _sceneLoading;
-    //[SerializeField] protected Slider _slider;
-    //[SerializeField] protected int _id;
-    //[SerializeField] protected Text _textLoading;
 
 
     public void SaveName()
@@ -35,9 +31,6 @@ public class FormLogin : MonoBehaviour
 
         PlayerPrefs.SetString("PlayerName", playerName);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        //_sceneLoading.SetActive(true);
-        //_slider.value = 0;
-        //StartCoroutine(LoadScenAfterTime(_id));
 
     }
 
@@ -56,26 +49,6 @@ public class FormLogin : MonoBehaviour
         yield return new WaitForSeconds(2);
         _aniMaxName.SetTrigger("end");
     }
-    //protected IEnumerator LoadScenAfterTime(int id)
-    //{
-    //    AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(id);
-
-    //    while (!asyncOperation.isDone)
-    //    {
-    //        float slider = Mathf.Clamp01(asyncOperation.progress);
-    //        int textLoad = Mathf.RoundToInt(asyncOperation.progress * 100f);
-
-    //        _slider.value = slider;
-    //        _textLoading.text = textLoad + "%";
-    //        if (asyncOperation.progress > 0.9f)
-    //        {
-    //            _slider.value = 1;
-    //            _textLoading.text = "100%";
-    //            yield return new WaitForSeconds(0.5f);
-    //        }
-
-    //        yield return null;
-    //    }
-    //}
+    
 
 }

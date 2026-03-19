@@ -7,17 +7,25 @@ public class EnemyMove : MonoBehaviour
     [SerializeField] protected float _speed = 4f; 
     [SerializeField] protected float _offsetZ = 5f;
     [SerializeField] protected DataPlayer _player;
+    protected Animator _ani;
     protected Rigidbody _rb;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _ani = GetComponent<Animator>();
     }
 
     private void Update()
     {
+        this.AniEnemy();
+    }
+
+    protected void AniEnemy()
+    {
         if (_player._currentHp <= 0)
         {
+            _ani.SetTrigger("Idle");
             _rb.velocity = Vector3.zero;
             return;
         }
@@ -31,6 +39,7 @@ public class EnemyMove : MonoBehaviour
     {
         if (_player._currentHp <= 0)
         {
+            _ani.SetTrigger("Idle");
             _rb.velocity = Vector3.zero;
             return;
         }

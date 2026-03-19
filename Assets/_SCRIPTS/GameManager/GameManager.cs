@@ -19,6 +19,12 @@ public class GameManager : MonoBehaviour
     [Header("HealthPlayer")]
     [SerializeField] protected DataPlayer _player;
 
+    [Header("Time Spawn Coin")]
+    [SerializeField] protected float _timeCoin;
+
+    [Header("Time Spawn Item")]
+    [SerializeField] protected float _timeItem;
+
     private void Awake()
     {
         if(instance == null)
@@ -33,6 +39,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SpawnCoinAfterTime());
+        StartCoroutine(SpawnItemAfterTime());
     }
     private void Update()
     {
@@ -51,7 +58,7 @@ public class GameManager : MonoBehaviour
 
         while (true)
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(_timeCoin);
 
             Vector3 originalPosition = PlayerControll.Instance.transform.position + new Vector3(Random.Range(-4f, 4f), Random.Range(1f, 2.5f), Random.Range(10f, 20f));
             Vector3 spawnPosition = originalPosition;
@@ -79,6 +86,52 @@ public class GameManager : MonoBehaviour
             if (isPosFound)
             {
                 GameObject g = CoinPool.Instance.GetCoinPool();
+                g.transform.position = spawnPosition;
+                g.transform.rotation = Quaternion.identity;
+                g.gameObject.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("Tam thoi khong tim thay vi tri spawn");
+            }
+        }
+    }
+
+    protected IEnumerator SpawnItemAfterTime()
+    {
+        const float MinDistance = 2.0f;
+        const int MaxTries = 5;
+
+        while (true)
+        {
+            yield return new WaitForSeconds(_timeItem);
+
+            Vector3 originalPosition = PlayerControll.Instance.transform.position + new Vector3(Random.Range(-4f, 4f), Random.Range(0.5f, 0.7f), Random.Range(17f, 20f));
+            Vector3 spawnPosition = originalPosition;
+
+            while (!isPosFound && tries < MaxTries)
+            {
+                isPosFound = true;
+                Collider[] hitColliders = Physics.OverlapSphere(spawnPosition, MinDistance);
+                foreach (var hit in hitColliders)
+                {
+                    if (hit.gameObject.CompareTag("Coin") && hit.gameObject.CompareTag("Obs"))
+                    {
+                        isPosFound = false;
+                        break;
+                    }
+                }
+
+                if (!isPosFound)
+                {
+                    spawnPosition = originalPosition + new Vector3(Random.Range(-2f, 2f), Random.Range(-0.2f, 0.2f), Random.Range(1f, 3f));
+                    tries++;
+                }
+            }
+
+            if (isPosFound)
+            {
+                GameObject g = PoolItemHealth.Instance.GetItemPool();
                 g.transform.position = spawnPosition;
                 g.transform.rotation = Quaternion.identity;
                 g.gameObject.SetActive(true);

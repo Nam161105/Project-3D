@@ -599,7 +599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.88235295}
+  m_Color: {r: 1, g: 0.06421433, b: 0, a: 0.88235295}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2979,10 +2979,9 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Item h\u1ED3i m\xE1u: S\u1EED d\u1EE5ng khi c\u1EA7n \u0111\u1EC3 h\u1ED3i
-    m\xE1u nhanh.\r\nM\xE1u:\r\nM\xE1u c\u1EE7a ng\u01B0\u1EDDi ch\u01A1i c\xF3 gi\u1EDBi
-    h\u1EA1n v\xE0 kh\xF4ng \u0111\u01B0\u1EE3c \u0111\u1EC3 m\xE1u \u2264 0. n\u1EBFu
-    m\xE1u xu\u1ED1ng 0, nh\xE2n v\u1EADt s\u1EBD ch\u1EBFt v\xE0 k\u1EBFt th\xFAc
-    l\u01B0\u1EE3t ch\u01A1i."
+    m\xE1u.\nM\xE1u:\r L\u01B0u \xFD, l\u01B0\u1EE3ng m\xE1u t\u1ED1i \u0111a c\u1EE7a
+    ng\u01B0\u1EDDi ch\u01A1i c\xF3 th\u1EC3 \u0111\u01B0\u1EE3c t\u0103ng l\xEAn
+    khi thanh kinh nghi\u1EC7m l\xEAn c\xE1c c\u1EA5p nh\u01B0 3,6,9,12."
 --- !u!222 &1133533148
 CanvasRenderer:
   m_ObjectHideFlags: 0

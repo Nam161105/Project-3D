@@ -43,6 +43,7 @@ public class QuizManager : MonoBehaviour
     {
         if(index >= _allQuestion.Length)
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.winSound);
             BoardEndGame.Instance.ActiveInfoPlayer();
             return;
         }
@@ -65,9 +66,7 @@ public class QuizManager : MonoBehaviour
         {
             string answerText = randomAnswers[i];
             _buttonAnswer[i].GetComponentInChildren<Text>().text = answerText;
-
             _buttonAnswer[i].onClick.RemoveAllListeners();
-
             _buttonAnswer[i].onClick.AddListener(() => OnClickAnswer(answerText));
         }
     }

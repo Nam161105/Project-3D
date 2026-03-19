@@ -5,10 +5,12 @@ using UnityEngine;
 public class BompDamage : MonoBehaviour
 {
     [SerializeField] protected float _dame;
+    protected bool _onSound = false;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && _onSound == false)
         {
+            _onSound = true;
             AudioManager.Instance.PlaySFX(AudioManager.Instance.bombSound);
             CamerFollowPlayer.Instance.CamParallax();
             IDame isCanTakeDmg = other.GetComponent<IDame>();

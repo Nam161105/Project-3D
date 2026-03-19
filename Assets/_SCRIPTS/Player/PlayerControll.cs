@@ -127,7 +127,7 @@ public class PlayerControll : MonoBehaviour
             IDame dame = HealthBarPlayer.Instance.GetComponent<IDame>();
             if (dame != null)
             {
-                dame.TakeDame(50);
+                dame.TakeDame(250);
             }
         }
     }

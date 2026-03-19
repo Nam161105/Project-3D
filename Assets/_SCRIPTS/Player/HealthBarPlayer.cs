@@ -9,6 +9,7 @@ public class HealthBarPlayer : MonoBehaviour, IDame
     [SerializeField] protected Image _healthBar;
     [SerializeField] protected DataPlayer _healthData;
     [SerializeField] protected Animator _ani;
+    protected bool _isdDead = false;
 
 
     private void Awake()
@@ -37,9 +38,11 @@ public class HealthBarPlayer : MonoBehaviour, IDame
     public void TakeDame(float dame)
     {
         _healthData._currentHp -= dame;
-        if(_healthData._currentHp <= 0)
+        if(_healthData._currentHp <= 0 && _isdDead == false)
         {
+            _isdDead = true;
             _ani.SetTrigger("Death");
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.deadSound);
             StartCoroutine(DeathAfterTime());
         }
         this.UpdateHealthBar();

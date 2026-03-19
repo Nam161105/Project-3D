@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseButton : MonoBehaviour
 {
     [SerializeField] protected GameObject _panelPause;
+    [SerializeField] protected DataPlayer _player;
     public void ButtonPause()
     {
         Time.timeScale = 0;
@@ -21,13 +22,16 @@ public class PauseButton : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        _player.ResetHealth();  
+        PlayerPrefs.SetString("Coin", 0.ToString());
         Time.timeScale = 1;
     }
 
     public void OutButton()
     {
+        _player.ResetHealth();
         PlayerPrefs.DeleteKey("PlayerName");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
         Time.timeScale = 1;
     }
 
@@ -40,5 +44,15 @@ public class PauseButton : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+
+    public void SoundButton()
+    {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.buttonClick);
+    }
+
+    public void MouseButton()
+    {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.mouseClick);
     }
 }

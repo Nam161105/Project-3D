@@ -12,4 +12,10 @@ public class DataPlayer : ScriptableObject
     {
         _currentHp = _maxHp;
     }
+
+    public void ResetHealth()
+    {
+        _maxHp = 500f;
+        _currentHp = _maxHp;
+    }
 }
